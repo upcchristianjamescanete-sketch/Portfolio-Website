@@ -37,16 +37,16 @@ navItems.forEach((link) => {
 const themeToggle = document.getElementById("themeToggle");
 
 function applyTheme(isDark) {
-    document.body.classList.toggle("dark-mode", isDark);
-    themeToggle.textContent = isDark ? "☀️" : "🌙";
-    themeToggle.setAttribute(
-        "aria-label",
-        isDark ? "Switch to light mode" : "Switch to dark mode"
-    );
+  document.body.classList.toggle("dark-mode", isDark);
+  if (!themeToggle) return;
+
+  themeToggle.textContent = isDark ? "☀" : "🌙";
+  themeToggle.setAttribute(
+    "aria-label",
+    isDark ? "Switch to light mode" : "Switch to dark mode"
+  );
+
 }
-
-let savedTheme = null;
-
 try {
     savedTheme = localStorage.getItem("portfolio-theme");
 } catch (error) {
@@ -174,8 +174,8 @@ contactForm.addEventListener("submit", (event) => {
     const emailSubject = encodeURIComponent(subject);
 
     const emailBody = encodeURIComponent(
-        `Name: ${Christian James Canete}\n` +
-        `Email: ${upcchristianjamescanete@gmail.com}\n\n` +
+        `Name: Christian James Canete}\n` +
+        `Email: upcchristianjamescanete@gmail.com}\n\n` +
         `Message:\n${message}`
     );
 
@@ -188,4 +188,19 @@ contactForm.addEventListener("submit", (event) => {
         "Opening your email application. Send the message there to complete delivery.";
 
     window.location.href = mailtoLink;
+});
+
+// Switch theme when clicked
+themeToggle.addEventListener("click", function () {
+
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        themeToggle.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+    } else {
+        themeToggle.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+    }
+
 });

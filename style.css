@@ -1140,3 +1140,30 @@ span {
     text-align: center;
 }
 
+/* Light Mode */
+body {
+    background-color: #010303;
+    color: #0a30d6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #046169;
+    color: #ffffff;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
